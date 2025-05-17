@@ -1,6 +1,8 @@
 __pycache__
 venv
 .env
+*.csv
+
 
 models/__pycache__/
 config/__pycache__/
