@@ -1,0 +1,42 @@
+from sqlalchemy import Column, Integer, String, ForeignKey, BigInteger, Text
+from config.database import Base
+
+class Target(Base):
+    __tablename__ = "target"
+
+    target_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    eventid = Column(BigInteger, ForeignKey("case.eventid"), index=True)
+    iyear = Column(Integer, nullable=True, index=True)
+    imonth = Column(Integer, nullable=True, index=True)
+    iday = Column(Integer, nullable=True, index=True)
+    country = Column(Integer, nullable=True, index=True)
+    country_txt = Column(String(256), nullable=True, index=True)
+    region = Column(Integer, nullable=True, index=True)
+    region_txt = Column(String(256), nullable=True, index=True)
+    provstate = Column(String(256), nullable=True, index=True)
+    city = Column(String(256), nullable=True, index=True)
+    targtype1 = Column(Integer, index=True, nullable=True)
+    targtype1_txt = Column(String(256), index=True, nullable=True)
+    targsubtype1 = Column(Integer, index=True, nullable=True)
+    targsubtype1_txt = Column(String(256), nullable=True)
+    corp1 = Column(String(256), index=True, nullable=True)
+    target1 = Column(Text, nullable=True)
+    natlty1 = Column(Integer, index=True, nullable=True)
+    natlty1_txt = Column(String(256), index=True, nullable=True)
+    targtype2 = Column(Integer, nullable=True)
+    targtype2_txt = Column(String(256), nullable=True)
+    targsubtype2 = Column(Integer, nullable=True)
+    targsubtype2_txt = Column(String(256), nullable=True)
+    corp2 = Column(String(256), nullable=True)
+    target2 = Column(Text, nullable=True)
+    natlty2 = Column(Integer, nullable=True)
+    natlty2_txt = Column(String(256), nullable=True)
+    targtype3 = Column(Integer, nullable=True)
+    targtype3_txt = Column(String(256), nullable=True)
+    targsubtype3 = Column(Integer, nullable=True)
+    targsubtype3_txt = Column(String(256), nullable=True)
+    corp3 = Column(String(256), nullable=True)
+    target3 = Column(Text, nullable=True)
+    natlty3 = Column(Integer, nullable=True)
+    natlty3_txt = Column(String(256), nullable=True)
+
