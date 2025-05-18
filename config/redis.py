@@ -1,9 +1,13 @@
 import redis
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 r = redis.Redis(
-    host='redis-12234.c296.ap-southeast-2-1.ec2.redns.redis-cloud.com',
-    port=12234,
+    host=os.getenv('REDIS_HOST', 'localhost'),
+    port=int(os.getenv('REDIS_PORT')),
     decode_responses=True,
-    username="default",
-    password="hSbzVlFJTaYhLjjrrmhzFcjT68iPdd5S",
+    username=os.getenv('REDIS_USERNAME', ''),
+    password=os.getenv('REDIS_PASSWORD', ''),
 )

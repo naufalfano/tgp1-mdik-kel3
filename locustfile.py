@@ -9,7 +9,15 @@ class UserBehavior(HttpUser):
 
     @task()
     def case(self):
-        self.client.get('api/attack')
+        self.client.get('api')
+        
+    @task()
+    def casualties(self):
+        self.client.get('api/casualties')
+    
+    @task()
+    def incident(self):
+        self.client.get('api/incident')
 
     # @task()
     # def casualties(self):
