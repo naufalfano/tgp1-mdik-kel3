@@ -10,8 +10,8 @@ DATABASE_URL=os.getenv("DATABASE_URL")
 
 Engine = create_async_engine(
     DATABASE_URL,
-    pool_size=50,
-    max_overflow=50,
+    pool_size=30,
+    max_overflow=15,
 )
 
 AsyncSessionLocal = sessionmaker(
