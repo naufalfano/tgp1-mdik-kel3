@@ -2,67 +2,29 @@ from locust import HttpUser, task
 
 class UserBehavior(HttpUser):
     host = "http://127.0.0.1:8000/"
-    
-    # @task
-    # def index(self):
-    #     self.client.get('/api')
+
+# Test 1
+    @task
+    def index(self):
+        self.client.get('api')
 
     @task()
-    def case(self):
-        self.client.get('api/attack')
+    def incident(self):
+        self.client.get('api/incident')
 
-    # @task()
-    # def casualties(self):
-    #     self.client.get('api/casualties')
+    @task()
+    def casualties(self):
+        self.client.get('api/casualties')
 
-    # @task()
-    # def incident(self):
-    #     self.client.get('api/incident')
+# Test 2
+    @task
+    def index_param(self):
+        self.client.get('api?country_txt=Afganisthan&page=2&sort_by=iyear&order=desc')
 
-    # @task()
-    # def perpetrator(self):
-    #     self.client.get('api/perpetrator')
+    @task()
+    def incident_param(self):
+        self.client.get('api/incident?crit1=1&page=10&sort_by=iyear&order=desc')
 
-    # @task()
-    # def target(self):
-    #     self.client.get('api/target')
-
-    # @task()
-    # def weapon(self):
-    #     self.client.get('api/weapon')
-
-# REDIS
-
-    # @task()
-    # def redis_api(self):
-    #     self.client.get('/redis/api')
-    
-    # @task()
-    # def redis_attack(self):
-    #     self.client.get('redis/api/attack')
-
-    # @task()
-    # def redis_casualties(self):
-    #     self.client.get('redis/api/casualties')
-
-    # @task()
-    # def redis_incident(self):
-    #     self.client.get('redis/api/incident')
-
-    # @task()
-    # def redis_perpetrator(self):
-    #     self.client.get('redis/api/perpetrator')
-    
-    # @task()
-    # def redis_target(self):
-    #     self.client.get('redis/api/target')
-    
-    # @task()
-    # def redis_weapon(self):
-    #     self.client.get('redis/api/weapon')
-
-# Test
-
-    # @task()
-    # def redis_weapon_test(self):
-    #     self.client.get('redis/api/weapon', params={"page" : 1, "limit" : 100})
+    @task()
+    def casualties_param(self):
+        self.client.get('api/casualties?ransom=1&page=2&sort_by=iyear&order=desc')

@@ -1,11 +1,13 @@
 from sqlalchemy import text
 from config.database import Engine
+import asyncio
 
-def test_connection():
+async def test_connection():
     try:
-        with Engine.connect() as connection:
-            result = connection.execute(text("SELECT 1"))
-            for row in result:
+        async with Engine.connect() as connection:
+            result = await connection.execute(text("SELECT 1"))
+            rows = result.fetchall()
+            for row in rows:
                 print(f"Connection successful: {row[0]}")
             return True
         
@@ -13,5 +15,9 @@ def test_connection():
         print(f"Connection failed: {e}")
         return False
 
+async def main():
+    result = await test_connection()
+    await Engine.dispose()
+
 if __name__ == "__main__":
-    test_connection()
+    asyncio.run(main())
