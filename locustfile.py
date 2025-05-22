@@ -2,22 +2,14 @@ from locust import HttpUser, task
 
 class UserBehavior(HttpUser):
     host = "http://127.0.0.1:8000/"
-    
-    # @task
-    # def index(self):
-    #     self.client.get('/api')
 
     @task()
     def case(self):
         self.client.get('api')
         
-    @task()
-    def casualties(self):
-        self.client.get('api/casualties')
-    
-    @task()
-    def incident(self):
-        self.client.get('api/incident')
+    @task
+    def redis_test(self):
+        self.client.get('redis/api')
 
     # @task()
     # def casualties(self):
